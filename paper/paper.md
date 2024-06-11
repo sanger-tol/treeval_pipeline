@@ -71,57 +71,6 @@ CHEAT SHEET - containing
 
 TreeVal produces a number of output files, many of which are generated for upload to JBrowse2 (these have been annotated with in brackets below). The `.pretext` are generated for use in PretextView, the contents of the `hic_files` folder (excluding `.pretext`) are used for visualisation in HiGlass.
 
-```
-{OUTDIR}
-│
-├─ treeval_upload/
-| ├─ my.genome                # GENERATE_GENOME         (FULL)
-│ ├─ coverage.bw              # READ_COVERAGE
-│ ├─ coverage_log.bw          # READ_COVERAGE
-| ├─ *_repeat_density.bw      # REPEAT_DENSITY
-│ ├─ *gap.bed.gz              # GAP_FINDER
-│ ├─ *gap.bed.gz.tbi          # GAP_FINDER
-│ ├─ *telomere.bed.gz         # TELO_FINDER
-│ ├─ *telomere.bed.gz.tbi     # TELO_FINDER
-│ ├─ *_buscogene.bigbed       # BUSCO_ANALYSIS          (FULL)
-│ ├─ *_ancestral.bigbed       # BUSCO_ANALYSIS          (FULL)
-│ ├─ *.gff.gz                 # GENE_ALIGNMENT-PEPTIDE  (FULL)
-│ ├─ *.gff.gz.tbi             # GENE_ALIGNMENT-PEPTIDE  (FULL)
-│ ├─ *_cdna.bigBed            # GENE_ALIGNMENT-NUCLEAR  (FULL)
-│ ├─ *_cds.bigBed             # GENE_ALIGNMENT-NUCLEAR  (FULL)
-│ ├─ *_rna.bigBed             # GENE_ALIGNMENT-NUCLEAR  (FULL)
-│ ├─ BSPQ1.bigBed             # INSILICO_DIGEST         (FULL)
-│ ├─ BSSS1.bigBed             # INSILICO_DIGEST         (FULL)
-│ ├─ DLE1.bigBed              # INSILICO_DIGEST         (FULL)
-│ ├─ *_selfcomp.bigBed        # SELFCOMP                (FULL)
-│ ├─ *.paf                    # SYNTENY                 (FULL)
-│ ├─ *.ref.spectra-cn.ln.png  # KMER                    (FULL)
-│ ├─ *_{kmer_size}_.bw        # KMER_COVERAGE
-│ └─ punchlists
-│   ├─ halfcoverage.bigbed    # READ_COVERAGE
-│   ├─ zerodepth.bigbed       # READ_COVERAGE
-│   ├─ maxdepth.bigbed        # READ_COVERAGE
-│   ├─ *_pep_punchlist.bed    # GENE_ALIGNMENT-PEPTIDE  (FULL)
-│   ├─ *_cdna_punchlist.bed   # GENE_ALIGNMENT-NUCLEAR  (FULL)
-│   ├─ *_cds_punchlist.bed    # GENE_ALIGNMENT-NUCLEAR  (FULL)
-│   └─ *_rna_punchlist.bed    # GENE_ALIGNMENT-NUCLEAR  (FULL)
-|
-├─ hic_files
-| ├─ *gap.bed                 # GAP_FINDER
-│ ├─ *_repeat_density.bw      # REPEAT_DENSITY
-│ ├─ *.mcool                  # HIC_MAPPING
-│ ├─ *_pretext_normal.pretext # HIC_MAPPING + PRETEXT_INGESTION
-│ ├─ *_pretext_hr.pretext     # HIC_MAPPING + PRETEXT_INGESTION
-│ └─ *telomere.bed            # TELO_FINDER
-|
-└─ pipeline_info
-  ├─ TreeVal_Runs*.txt        # TreeValProject.Summary (Custom Groovy Function)
-  ├─ execution*{html|txt}     # STANDARD OUTPUT
-  ├─ pipeline*{html|txt}      # STANDARD OUTPUT
-  └─ software_versions.yml    # STANDARD OUTPUT
-
-```
-\autoref{The TreeVal V1.1.0 output directory structure}
 
 # Conclusions and Discussions
 The TreeVal pipeline provides a comprehensive set of functionalities to facilitate genome assembly and manual curation in a single execution. Users can avoid the hassle of downloading dependencies and installing relevant packages and environments, thanks to the user-friendly Nextflow framework [@ewels2020nf] [@di2017nextflow]. We are currently investigating ways to scale up the analysis pipeline, emphasizing flexibility and dynamism. In this effort, we plan to deliver a more versatile configuration profile that accommodates genomes of various sizes and diverse genomic characteristics. Additionally, we are implementing functions that accept optional arguments, enabling the selection of specific subworkflows for execution. Furthermore, we are exploring additional analyses such as linkage analysis and further grouping of ancestral elements. Despite these ongoing enhancements, we believe this pipeline is a robust platform that supports the goals of the Darwin Tree of Life (DTOL) project [@darwin2022sequence] and the broader Earth BioGenome Project (EBP) [@lewin2018earth].
